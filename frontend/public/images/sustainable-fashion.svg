@@ -1,0 +1,38 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background elements -->
+  <circle cx="400" cy="300" r="250" fill="#778165" fill-opacity="0.1"/>
+  
+  <!-- T-shirt shape -->
+  <path d="M500 200 L450 150 L350 150 L300 200 L300 400 L500 400 Z" fill="#FFFFFF" stroke="#2c3324" stroke-width="3"/>
+  
+  <!-- Recycling symbol -->
+  <g transform="translate(400, 275) scale(0.8)">
+    <path d="M0 -60 L20 -30 L-20 -30 Z" fill="#778165" stroke="#2c3324" stroke-width="2"/>
+    <path d="M52 30 L32 0 L60 -15 Z" fill="#778165" stroke="#2c3324" stroke-width="2"/>
+    <path d="M-52 30 L-32 0 L-60 -15 Z" fill="#778165" stroke="#2c3324" stroke-width="2"/>
+    <path d="M0 -30 A52 52 0 0 1 45 26 L32 0 A30 30 0 0 0 0 -30 Z" fill="#778165" stroke="#2c3324" stroke-width="2"/>
+    <path d="M45 26 A52 52 0 0 1 -45 26 L-32 0 A30 30 0 0 0 32 0 Z" fill="#778165" stroke="#2c3324" stroke-width="2"/>
+    <path d="M-45 26 A52 52 0 0 1 0 -30 L0 -30 A30 30 0 0 0 -32 0 Z" fill="#778165" stroke="#2c3324" stroke-width="2"/>
+  </g>
+  
+  <!-- Leafy elements -->
+  <path d="M350 100 Q325 70 350 40 Q375 70 350 100" fill="#778165" stroke="#2c3324" stroke-width="2"/>
+  <path d="M450 100 Q475 70 450 40 Q425 70 450 100" fill="#778165" stroke="#2c3324" stroke-width="2"/>
+  
+  <!-- Decorative lines -->
+  <line x1="300" y1="250" x2="500" y2="250" stroke="#2c3324" stroke-width="1" stroke-dasharray="5,5"/>
+  <line x1="300" y1="300" x2="500" y2="300" stroke="#2c3324" stroke-width="1" stroke-dasharray="5,5"/>
+  <line x1="300" y1="350" x2="500" y2="350" stroke="#2c3324" stroke-width="1" stroke-dasharray="5,5"/>
+  
+  <!-- Decorative circles -->
+  <circle cx="250" cy="200" r="15" fill="#979782" fill-opacity="0.6"/>
+  <circle cx="550" cy="200" r="15" fill="#979782" fill-opacity="0.6"/>
+  <circle cx="550" cy="400" r="15" fill="#979782" fill-opacity="0.6"/>
+  <circle cx="250" cy="400" r="15" fill="#979782" fill-opacity="0.6"/>
+  
+  <!-- Small plant elements -->
+  <path d="M230 230 Q215 215 230 200 Q245 215 230 230" fill="#778165" stroke="#2c3324" stroke-width="1.5"/>
+  <path d="M570 230 Q585 215 570 200 Q555 215 570 230" fill="#778165" stroke="#2c3324" stroke-width="1.5"/>
+  <path d="M570 370 Q585 385 570 400 Q555 385 570 370" fill="#778165" stroke="#2c3324" stroke-width="1.5"/>
+  <path d="M230 370 Q215 385 230 400 Q245 385 230 370" fill="#778165" stroke="#2c3324" stroke-width="1.5"/>
+</svg> 
