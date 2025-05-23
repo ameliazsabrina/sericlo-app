@@ -89,7 +89,10 @@ export default function CartPage() {
     fetchCart();
     const script = document.createElement("script");
     script.src = "https://app.midtrans.com/snap/snap.js";
-    script.setAttribute("data-client-key", MIDTRANS_CLIENT_KEY);
+    script.setAttribute(
+      "data-client-key",
+      process.env.NEXT_PUBLIC_MIDTRANS_CLIENT_KEY || "SET_YOUR_CLIENT_KEY_HERE"
+    );
     script.async = true;
     document.body.appendChild(script);
 
