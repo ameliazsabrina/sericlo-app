@@ -152,7 +152,8 @@ export default function SellPage() {
       }
 
       const API_URL =
-        process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001";
+        process.env.NEXT_PUBLIC_API_URL ||
+        "https://sericlo-6e15467e3310.herokuapp.com";
       const formDataToSend = new FormData();
       Object.entries(formData).forEach(([key, value]) => {
         formDataToSend.append(key, value);

@@ -18,8 +18,9 @@ dotenv.config();
 const app = express();
 const compression = require("compression");
 
-const PORT = process.env.PORT || 5001;
-const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:3000";
+const PORT = process.env.PORT || "https://sericlo-6e15467e3310.herokuapp.com";
+const FRONTEND_URL =
+  process.env.FRONTEND_URL || "https://sericlo-6e15467e3310.herokuapp.com";
 
 app.set("trust proxy", 1);
 
