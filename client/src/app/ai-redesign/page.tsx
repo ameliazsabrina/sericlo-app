@@ -8,7 +8,9 @@ import { FiUpload, FiSend, FiZap, FiFilter } from "react-icons/fi";
 import axios from "axios";
 import { createClient } from "@/utils/supabase/client";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001";
+const API_URL =
+  process.env.NEXT_PUBLIC_API_URL ||
+  "https://sericlo-6e15467e3310.herokuapp.com";
 
 const api = axios.create({
   baseURL: API_URL,
