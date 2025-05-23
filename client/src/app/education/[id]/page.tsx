@@ -369,7 +369,7 @@ const ArticlePage = () => {
               className="prose prose-lg max-w-none prose-headings:text-gray-800 prose-headings:font-semibold prose-p:text-gray-700 prose-p:leading-relaxed prose-li:text-gray-700 prose-strong:text-gray-900 prose-strong:font-semibold prose-a:text-emerald-600 prose-a:no-underline hover:prose-a:underline"
               dangerouslySetInnerHTML={{
                 __html: article.content
-                  .replace(/<h2>(.*?)<\/h2>/g, (match, content, index) => {
+                  .replace(/<h2>(.*?)<\/h2>/g, (match, content) => {
                     const i =
                       article.content.split(match, 1).join("").match(/<h2>/g)
                         ?.length || 0;

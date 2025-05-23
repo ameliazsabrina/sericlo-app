@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request } from "express";
 import cors from "cors";
 import morgan from "morgan";
 import dotenv from "dotenv";
@@ -17,20 +17,14 @@ dotenv.config();
 
 const app = express();
 const compression = require("compression");
-const rateLimit = require("express-rate-limit");
-const PORT = process.env.PORT || 5001;
-const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:3000";
+
+const PORT = process.env.PORT || 3000;
+const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:3001";
+
+app.set("trust proxy", 1);
 
 app.use(helmet());
 app.use(compression());
-
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  limit: 100,
-  message: "Too many requests, please try again later.",
-});
-
-app.use(limiter);
 
 const checkSupabaseConnection = async () => {
   try {
@@ -47,7 +41,9 @@ const checkSupabaseConnection = async () => {
   }
 };
 
-checkSupabaseConnection();
+if (process.env.NODE_ENV !== "production") {
+  checkSupabaseConnection();
+}
 
 app.use(morgan("dev"));
 app.use(express.json());
@@ -90,5 +86,9 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to Sericlo API" });
 });
 
-console.log("Server is running on port", PORT);
-app.listen(PORT);
+if (process.env.NODE_ENV !== "production") {
+  console.log("Server is running on port", PORT);
+  app.listen(PORT);
+}
+
+export default app;
