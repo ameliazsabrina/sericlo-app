@@ -65,8 +65,7 @@ router.get("/google", async (req: Request, res: Response) => {
           prompt: "consent",
         },
         redirectTo: `${
-          process.env.FRONTEND_URL ||
-          "https://sericlo-ameliazsabrinas-projects.vercel.app"
+          process.env.FRONTEND_URL || "https://sericlo-app-client.vercel.app"
         }/marketplace`,
       },
     });

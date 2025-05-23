@@ -20,7 +20,7 @@ const compression = require("compression");
 
 const PORT = process.env.PORT || 5001;
 const FRONTEND_URL =
-  process.env.FRONTEND_URL || "https://sericlo-6e15467e3310.herokuapp.com";
+  process.env.FRONTEND_URL || "https://sericlo-app-client.vercel.app";
 
 app.set("trust proxy", 1);
 
@@ -119,7 +119,7 @@ if (process.env.NODE_ENV === "production") {
   });
 } else {
   app.get("/", (req: Request, res: Response) => {
-    res.json({ message: "Welcome to Sericlo API - Development Mode" });
+    res.json({ message: "Welcome to Sericlo API" });
   });
 }
 
