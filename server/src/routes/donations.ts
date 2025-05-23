@@ -12,14 +12,22 @@ const supabase = createClient(
 );
 
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
+  destination: (
+    req: Request,
+    file: Express.Multer.File,
+    cb: (error: Error | null, destination: string) => void
+  ) => {
     const uploadDir = path.join(__dirname, "../../uploads");
     if (!fs.existsSync(uploadDir)) {
       fs.mkdirSync(uploadDir, { recursive: true });
     }
     cb(null, uploadDir);
   },
-  filename: (req, file, cb) => {
+  filename: (
+    req: Request,
+    file: Express.Multer.File,
+    cb: (error: Error | null, filename: string) => void
+  ) => {
     const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
     cb(null, uniqueSuffix + path.extname(file.originalname));
   },
@@ -28,7 +36,11 @@ const storage = multer.diskStorage({
 const upload = multer({
   storage,
   limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
-  fileFilter: (req, file, cb) => {
+  fileFilter: (
+    req: Request,
+    file: Express.Multer.File,
+    cb: (error: Error | null, acceptFile?: boolean) => void
+  ) => {
     const fileTypes = /jpeg|jpg|png|webp/;
     const extname = fileTypes.test(
       path.extname(file.originalname).toLowerCase()

@@ -10,7 +10,11 @@ const router = express.Router();
 const upload = multer({
   storage: multer.memoryStorage(),
   limits: { fileSize: 5 * 1024 * 1024 },
-  fileFilter: (req, file, cb) => {
+  fileFilter: (
+    req: Request,
+    file: Express.Multer.File,
+    cb: (error: Error | null, acceptFile?: boolean) => void
+  ) => {
     const fileTypes = /jpeg|jpg|png|webp/;
     const extname = fileTypes.test(
       path.extname(file.originalname).toLowerCase()
