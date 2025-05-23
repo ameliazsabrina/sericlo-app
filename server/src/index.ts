@@ -18,7 +18,7 @@ dotenv.config();
 const app = express();
 const compression = require("compression");
 
-const PORT = process.env.PORT || "https://sericlo-6e15467e3310.herokuapp.com";
+const PORT = process.env.PORT || 5001;
 const FRONTEND_URL =
   process.env.FRONTEND_URL || "https://sericlo-6e15467e3310.herokuapp.com";
 
@@ -87,9 +87,7 @@ app.get("/", (req: Request, res: Response) => {
   res.json({ message: "Welcome to Sericlo API" });
 });
 
-if (process.env.NODE_ENV !== "production") {
-  console.log("Server is running on port", PORT);
-  app.listen(PORT);
-}
+console.log("Server is running on port", PORT);
+app.listen(PORT);
 
 export default app;
