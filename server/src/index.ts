@@ -19,9 +19,7 @@ const app = express();
 const compression = require("compression");
 const rateLimit = require("express-rate-limit");
 const PORT = process.env.PORT || 5001;
-const FRONTEND_URL =
-  process.env.FRONTEND_URL ||
-  "https://sericlo-ameliazsabrinas-projects.vercel.app";
+const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:3000";
 
 app.use(helmet());
 app.use(compression());
@@ -53,6 +51,7 @@ checkSupabaseConnection();
 
 app.use(morgan("dev"));
 app.use(express.json());
+
 app.use(
   cors({
     origin: FRONTEND_URL,
@@ -64,32 +63,17 @@ app.use(
       "X-Requested-With",
       "Accept",
       "Origin",
-      "Access-Control-Allow-Origin",
-      "Access-Control-Allow-Headers",
-      "Access-Control-Allow-Methods",
-      "Access-Control-Allow-Credentials",
     ],
     exposedHeaders: ["Content-Range", "X-Content-Range"],
     maxAge: 86400,
+    optionsSuccessStatus: 200,
   })
 );
 
+app.options("*", cors());
+
 app.get("/health", (req, res) => {
   res.status(200).json({ status: "OK" });
-});
-
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Credentials", "true");
-  res.header("Access-Control-Allow-Origin", FRONTEND_URL);
-  res.header(
-    "Access-Control-Allow-Methods",
-    "GET, POST, PUT, DELETE, OPTIONS, PATCH"
-  );
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Content-Type, Authorization, X-Requested-With, Accept, Origin"
-  );
-  next();
 });
 
 app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
@@ -106,4 +90,5 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to Sericlo API" });
 });
 
+console.log("Server is running on port", PORT);
 app.listen(PORT);

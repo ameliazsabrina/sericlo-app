@@ -1,11 +1,10 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import Image from "next/image";
+
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { FiArrowLeft, FiClock, FiCalendar, FiUser } from "react-icons/fi";
+import { FaClock, FaCalendar, FaUser, FaArrowLeft } from "react-icons/fa";
 
 const articles = [
   {
@@ -17,7 +16,7 @@ const articles = [
     category: "Sustainability",
     readTime: "5 min",
     date: "May 15, 2023",
-    author: "Emma Johnson",
+    author: "Najwa Aulia",
     content: `
    
   <p>Fast fashion telah mengubah industri pakaian, menawarkan tren terbaru dengan harga terjangkau dan produksi yang sangat cepat. Namun, kenyamanan ini membawa dampak besar terhadap lingkungan.</p>
@@ -294,113 +293,114 @@ const ArticlePage = () => {
   }
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="min-h-screen bg-[#F5F5F5] pb-16"
-    >
-      <div className="relative h-[50vh] w-full">
-        <Image
-          src={article.image || "/images/placeholder.jpg"}
-          alt={article.title}
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-black/40" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center max-w-4xl mx-auto px-4">
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-              className="text-3xl md:text-5xl font-bold text-white mb-4"
-            >
-              {article.title}
-            </motion.h1>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4, duration: 0.5 }}
-              className="flex items-center justify-center space-x-4 text-white"
-            >
-              <span className="flex items-center">
-                <FiUser className="mr-1" />
-                {article.author}
-              </span>
-              <span className="flex items-center">
-                <FiCalendar className="mr-1" />
-                {article.date}
-              </span>
-              <span className="flex items-center">
-                <FiClock className="mr-1" />
-                {article.readTime}
-              </span>
-            </motion.div>
-          </div>
-        </div>
-      </div>
-
-      <div className="max-w-4xl mx-auto px-4 py-12">
-        <Link
-          href="/education"
-          className="inline-flex items-center text-gray-600 hover:text-primary mb-8 transition-colors"
-        >
-          <FiArrowLeft className="mr-2" />
-          Back to Articles
-        </Link>
-
-        <div className="bg-white p-6 md:p-10 rounded-lg shadow-sm">
-          <div
-            className="prose prose-lg max-w-none"
-            dangerouslySetInnerHTML={{ __html: article.content }}
-          />
-
-          <div className="mt-10 pt-6 border-t border-gray-200">
-            <span className="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">
+    <div className="min-h-screen bg-white">
+      <div className="relative w-full bg-gradient-to-r from-emerald-50 to-emerald-100 py-12 mb-8">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6">
+          <div className="flex items-center mb-2">
+            <span className="inline-block px-3 py-1 bg-emerald-100 text-emerald-800 rounded-full text-sm font-medium">
               {article.category}
             </span>
           </div>
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+            {article.title}
+          </h1>
+          <p className="text-lg text-gray-700 mb-6 max-w-2xl">
+            {article.excerpt}
+          </p>
         </div>
+      </div>
 
-        <div className="mt-12">
-          <h2 className="text-2xl font-semibold mb-6">Related Articles</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {articles
-              .filter(
-                (a) => a.id !== article.id && a.category === article.category
-              )
-              .slice(0, 2)
-              .map((relatedArticle) => (
-                <Link
-                  href={`/education/${relatedArticle.id}`}
-                  key={relatedArticle.id}
-                >
-                  <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                    <div className="relative h-48">
-                      <Image
-                        src={relatedArticle.image || "/images/placeholder.jpg"}
-                        alt={relatedArticle.title}
-                        fill
-                        className="object-cover"
-                      />
+      <div className="max-w-3xl mx-auto px-4 sm:px-6">
+        <div className="bg-white rounded-lg p-6 md:p-8">
+          <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 mb-4 pb-4 border-b border-gray-100">
+            <div className="flex items-center">
+              <FaUser className="h-4 w-4 mr-1" />
+              <span>{article.author}</span>
+            </div>
+            <div className="flex items-center">
+              <FaCalendar className="h-4 w-4 mr-1" />
+              <span>{article.date}</span>
+            </div>
+            <div className="flex items-center">
+              <FaClock className="h-4 w-4 mr-1" />
+              <span>{article.readTime} read</span>
+            </div>
+          </div>
+
+          <div className="bg-gray-50 rounded-lg p-4 mb-8">
+            <h3 className="text-sm font-semibold text-gray-700 mb-3">
+              Table of Contents
+            </h3>
+            <div className="space-y-2">
+              {article.content
+                .match(/<h2>(.*?)<\/h2>/g)
+                ?.map((match, index) => {
+                  const title = match.replace(/<h2>(.*?)<\/h2>/, "$1");
+                  const anchor = `section-${index + 1}`;
+                  return (
+                    <div key={index} className="flex items-center text-sm">
+                      <div className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center mr-2 text-xs font-medium">
+                        {index + 1}
+                      </div>
+                      <a
+                        href={`#${anchor}`}
+                        className="text-gray-700 hover:text-emerald-600 transition-colors"
+                      >
+                        {title}
+                      </a>
                     </div>
-                    <div className="p-4">
-                      <h3 className="font-medium text-lg mb-2">
-                        {relatedArticle.title}
-                      </h3>
-                      <p className="text-gray-600 text-sm line-clamp-2">
-                        {relatedArticle.excerpt}
-                      </p>
-                    </div>
-                  </div>
-                </Link>
-              ))}
+                  );
+                })}
+            </div>
+          </div>
+
+          <div className="relative">
+            <div className="mb-8">
+              <Link
+                href="/education"
+                className="inline-flex items-center text-emerald-600 hover:text-emerald-700 font-medium"
+              >
+                <FaArrowLeft className="mr-2 h-3 w-3" />
+                Back to Articles
+              </Link>
+            </div>
+
+            <div
+              className="prose prose-lg max-w-none prose-headings:text-gray-800 prose-headings:font-semibold prose-p:text-gray-700 prose-p:leading-relaxed prose-li:text-gray-700 prose-strong:text-gray-900 prose-strong:font-semibold prose-a:text-emerald-600 prose-a:no-underline hover:prose-a:underline"
+              dangerouslySetInnerHTML={{
+                __html: article.content
+                  .replace(/<h2>(.*?)<\/h2>/g, (match, content, index) => {
+                    const i =
+                      article.content.split(match, 1).join("").match(/<h2>/g)
+                        ?.length || 0;
+                    return `<h2 id="section-${
+                      i + 1
+                    }" class="flex items-center border-l-4 border-emerald-500 pl-4 py-1 mt-10 mb-6">${content}</h2>`;
+                  })
+                  .replace(/<ul>/g, '<ul class="space-y-2 my-6 ml-6">')
+                  .replace(/<li>/g, '<li class="pl-2">')
+                  .replace(/<p>/g, '<p class="mb-6">')
+                  .replace(
+                    /<strong>/g,
+                    '<strong class="text-emerald-700 font-semibold">'
+                  ),
+              }}
+            />
+
+            <div className="mt-12 pt-6 border-t border-gray-200">
+              <div className="flex items-center justify-between">
+                <span className="inline-block px-3 py-1 bg-emerald-100 text-emerald-800 rounded-full text-sm font-medium">
+                  {article.category}
+                </span>
+                <span className="text-sm text-gray-500">
+                  Published on {article.date}
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

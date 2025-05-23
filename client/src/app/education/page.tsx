@@ -10,25 +10,25 @@ const categories = ["All", "Sustainability", "Fashion", "Recycling", "DIY"];
 const articles = [
   {
     id: 1,
-    title: "Fast Fashion dan Dampaknya",
+    title: "The Impact of Fast Fashion on Our Environment",
     excerpt:
       "Eksplorasi bagaimana siklus produksi cepat dari fast fashion berdampak pada degradasi lingkungan dan apa yang bisa kita lakukan tentangnya.",
     image: "/education/1.jpg",
     category: "Sustainability",
     readTime: "5 min read",
     date: "May 15, 2023",
-    author: "Anisa Wijaya",
+    author: "Najwa Aulia",
   },
   {
     id: 2,
-    title: "5 Cara Mengubah Pakaian Lama Menjadi Baru di Rumah",
+    title: "5 Ways to Transform Old Clothes into New at Home",
     excerpt:
       "Belajar teknik kreatif untuk mengubah pakaian lama menjadi baru, bermanfaat tanpa keterampilan menjahit yang maju.",
     image: "/education/2.jpg",
     category: "DIY",
     readTime: "8 min read",
     date: "June 3, 2023",
-    author: "Budi Santoso",
+    author: "Michael Chang",
   },
 ];
 

@@ -8,9 +8,12 @@ node_modules/
 **/dist/
 **/build/
 **/.next/
-frontend/.next/
-frontend/out/
-backend/dist/
+**/client/.next/
+**/client/node_modules/
+**/client/out/
+**/server/dist/
+**/server/node_modules/
+**/server/out/
 
 # Environment variables
 **/.env
