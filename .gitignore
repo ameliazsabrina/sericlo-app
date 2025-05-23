@@ -5,7 +5,6 @@ node_modules/
 .pnp.js
 
 # Build outputs
-**/dist/
 **/build/
 **/.next/
 **/client/.next/
