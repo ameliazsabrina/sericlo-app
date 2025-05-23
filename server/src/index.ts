@@ -87,6 +87,42 @@ app.get("/", (req: Request, res: Response) => {
   res.json({ message: "Welcome to Sericlo API" });
 });
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../client/build")));
+
+  app.get("*", (req: Request, res: Response) => {
+    res.sendFile(path.join(__dirname, "../client/build", "index.html"));
+  });
+} else {
+  app.get("/", (req: Request, res: Response) => {
+    res.json({ message: "Welcome to Sericlo API" });
+  });
+}
+
+if (process.env.NODE_ENV === "production") {
+  app.use("/_next", express.static(path.join(__dirname, "../client/.next")));
+  app.use(
+    "/static",
+    express.static(path.join(__dirname, "../client/.next/static"))
+  );
+
+  app.use(express.static(path.join(__dirname, "../client/public")));
+
+  app.get("*", (req: Request, res: Response) => {
+    if (req.path.startsWith("/api/")) {
+      return res.status(404).json({ error: "API route not found" });
+    }
+
+    res.sendFile(
+      path.join(__dirname, "../client/.next/server/pages/index.html")
+    );
+  });
+} else {
+  app.get("/", (req: Request, res: Response) => {
+    res.json({ message: "Welcome to Sericlo API - Development Mode" });
+  });
+}
+
 console.log("Server is running on port", PORT);
 app.listen(PORT);
 
