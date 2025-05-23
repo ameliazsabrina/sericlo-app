@@ -18,8 +18,8 @@ dotenv.config();
 const app = express();
 const compression = require("compression");
 
-const PORT = process.env.PORT || 3000;
-const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:3001";
+const PORT = process.env.PORT || 5001;
+const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:3000";
 
 app.set("trust proxy", 1);
 
