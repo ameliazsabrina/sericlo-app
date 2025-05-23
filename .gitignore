@@ -10,7 +10,6 @@ node_modules/
 **/client/.next/
 **/client/node_modules/
 **/client/out/
-**/server/dist/
 **/server/node_modules/
 **/server/out/
 
