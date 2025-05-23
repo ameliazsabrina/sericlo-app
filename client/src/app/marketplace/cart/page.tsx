@@ -88,7 +88,7 @@ export default function CartPage() {
   useEffect(() => {
     fetchCart();
     const script = document.createElement("script");
-    script.src = "https://app.sandbox.midtrans.com/snap/snap.js";
+    script.src = "https://app.midtrans.com/snap/snap.js";
     script.setAttribute("data-client-key", MIDTRANS_CLIENT_KEY);
     script.async = true;
     document.body.appendChild(script);
