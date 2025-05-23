@@ -1,5 +1,9 @@
 {
   "name": "sericlo-backend",
+  "engines": {
+    "node": "22.12.0",
+    "npm": "10.9.0"
+  },
   "version": "1.0.0",
   "description": "Backend API for Sericlo - Eco-friendly textile waste reduction platform",
   "main": "index.js",
