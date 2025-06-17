@@ -65,7 +65,7 @@ router.get("/google", async (req: Request, res: Response) => {
           prompt: "consent",
         },
         redirectTo: `${
-          process.env.FRONTEND_URL || "https://sericlo.my.id"
+          process.env.FRONTEND_URL || "https://sericlo.my.id/"
         }/marketplace`,
       },
     });

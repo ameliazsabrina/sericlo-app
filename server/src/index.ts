@@ -19,7 +19,7 @@ const app = express();
 const compression = require("compression");
 
 const PORT = process.env.PORT || 5001;
-const FRONTEND_URL = process.env.FRONTEND_URL || "https://sericlo.my.id";
+const FRONTEND_URL = process.env.FRONTEND_URL || "https://sericlo.my.id/";
 
 app.set("trust proxy", 1);
 
